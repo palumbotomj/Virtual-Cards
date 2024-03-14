@@ -1,0 +1,19 @@
+/* Add to the <style> section */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.card-component {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes flip {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(180deg); }
+}
+
+/* Apply this class to elements that should flip */
+.flip-animation {
+  animation: flip 0.5s ease-in-out;
+}
