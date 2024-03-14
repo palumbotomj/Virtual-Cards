@@ -1,15 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Virtual Card</title>
-<link rel="stylesheet" href="style.css">
-<style>
-  body { margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center; background: #f0f0f0; }
-  .hidden { display: none; }
-  .card-component { cursor: pointer; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gena's Weekly Card of Gratitude & Love!</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -18,36 +13,6 @@
 <img id="card-front" class="card-component hidden" src="https://raw.githubusercontent.com/palumbotomj/Virtual-Cards/main/Assets/NSA/Front%20of%20Card%20outside.png" alt="Card Front" />
 <img id="card-inside" class="card-component hidden" src="https://raw.githubusercontent.com/palumbotomj/Virtual-Cards/main/Assets/NSA/Inside%20of%20card.png" alt="Card Inside" />
 <img id="card-back" class="card-component hidden" src="https://raw.githubusercontent.com/palumbotomj/Virtual-Cards/main/Assets/NSA/Back%20of%20Card%20Outside.png" alt="Card Back" />
-
-<script>
-  document.getElementById('envelope-front').addEventListener('click', () => {
-    document.getElementById('envelope-front').classList.add('hidden');
-    document.getElementById('envelope-back').classList.remove('hidden');
-  });
-
-  document.getElementById('envelope-back').addEventListener('click', () => {
-    document.getElementById('envelope-back').classList.add('hidden');
-    document.getElementById('card-front').classList.remove('hidden');
-  });
-
-  document.getElementById('card-front').addEventListener('click', () => {
-    document.getElementById('card-front').classList.add('hidden');
-    document.getElementById('card-inside').classList.remove('hidden');
-  });
-
-  document.getElementById('card-inside').addEventListener('click', () => {
-    document.getElementById('card-inside').classList.add('hidden');
-    document.getElementById('card-back').classList.remove('hidden');
-  });
-
-  // Optional: If you want to restart the sequence after clicking the card back, add this listener:
-  /*
-  document.getElementById('card-back').addEventListener('click', () => {
-    document.getElementById('card-back').classList.add('hidden');
-    document.getElementById('envelope-front').classList.remove('hidden');
-  });
-  */
-</script>
 
 <script src="script.js"></script>
 </body>
