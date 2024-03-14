@@ -6,42 +6,46 @@
 <title>Virtual Card</title>
 <style>
   body { margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center; background: #f0f0f0; }
-  #envelope-front, #card-front { cursor: pointer; }
-  #envelope-front, #card-front, #card-back, #card-inside { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); transition: transform 1s, opacity 1s; }
-  #envelope-back, #card-front, #card-back, #card-inside { display: none; }
-  #card-inside, #card-back { transform: translateY(100%) rotateX(90deg); }
+  .hidden { display: none; }
+  .card-component { cursor: pointer; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
 </style>
 </head>
 <body>
 
-<img id="envelope-front" src="https://raw.githubusercontent.com/palumbotomj/Virtual-Cards/main/Assets/NSA/Front%20of%20env.png" alt="Envelope Front" />
-<img id="envelope-back" src="https://raw.githubusercontent.com/palumbotomj/Virtual-Cards/main/Assets/NSA/Back%20of%20env.png" alt="Envelope Back" />
-<img id="card-front" src="https://raw.githubusercontent.com/palumbotomj/Virtual-Cards/main/Assets/NSA/Front%20of%20Card%20outside.png" alt="Card Front" />
-<img id="card-inside" src="https://raw.githubusercontent.com/palumbotomj/Virtual-Cards/main/Assets/NSA/Inside%20of%20card.png" alt="Card Inside" />
-<img id="card-back" src="https://raw.githubusercontent.com/palumbotomj/Virtual-Cards/main/Assets/NSA/Back%20of%20Card%20Outside.png" alt="Card Back" />
+<img id="envelope-front" class="card-component" src="https://raw.githubusercontent.com/palumbotomj/Virtual-Cards/main/Assets/NSA/Front%20of%20env.png" alt="Envelope Front" />
+<img id="envelope-back" class="card-component hidden" src="https://raw.githubusercontent.com/palumbotomj/Virtual-Cards/main/Assets/NSA/Back%20of%20env.png" alt="Envelope Back" />
+<img id="card-front" class="card-component hidden" src="https://raw.githubusercontent.com/palumbotomj/Virtual-Cards/main/Assets/NSA/Front%20of%20Card%20outside.png" alt="Card Front" />
+<img id="card-inside" class="card-component hidden" src="https://raw.githubusercontent.com/palumbotomj/Virtual-Cards/main/Assets/NSA/Inside%20of%20card.png" alt="Card Inside" />
+<img id="card-back" class="card-component hidden" src="https://raw.githubusercontent.com/palumbotomj/Virtual-Cards/main/Assets/NSA/Back%20of%20Card%20Outside.png" alt="Card Back" />
 
 <script>
-  document.getElementById('envelope-front').addEventListener('click', function() {
-    this.style.display = 'none';
-    document.getElementById('envelope-back').style.display = 'block';
-    setTimeout(() => {
-      document.getElementById('envelope-back').style.display = 'none';
-      document.getElementById('card-front').style.display = 'block';
-    }, 1000); // Time before showing card front
+  document.getElementById('envelope-front').addEventListener('click', () => {
+    document.getElementById('envelope-front').classList.add('hidden');
+    document.getElementById('envelope-back').classList.remove('hidden');
   });
 
-  document.getElementById('card-front').addEventListener('click', function() {
-    this.style.display = 'none';
-    document.getElementById('card-inside').style.display = 'block';
-    setTimeout(() => {
-      document.getElementById('card-inside').style.transform = 'translate(-50%, -50%) rotateX(0deg)';
-      setTimeout(() => {
-        document.getElementById('card-inside').style.display = 'none';
-        document.getElementById('card-back').style.display = 'block';
-        document.getElementById('card-back').style.opacity = '1';
-      }, 2000); // Time before showing card back
-    }, 1000); // Time for card inside to flip
+  document.getElementById('envelope-back').addEventListener('click', () => {
+    document.getElementById('envelope-back').classList.add('hidden');
+    document.getElementById('card-front').classList.remove('hidden');
   });
+
+  document.getElementById('card-front').addEventListener('click', () => {
+    document.getElementById('card-front').classList.add('hidden');
+    document.getElementById('card-inside').classList.remove('hidden');
+  });
+
+  document.getElementById('card-inside').addEventListener('click', () => {
+    document.getElementById('card-inside').classList.add('hidden');
+    document.getElementById('card-back').classList.remove('hidden');
+  });
+
+  // Optional: If you want to restart the sequence after clicking the card back, add this listener:
+  /*
+  document.getElementById('card-back').addEventListener('click', () => {
+    document.getElementById('card-back').classList.add('hidden');
+    document.getElementById('envelope-front').classList.remove('hidden');
+  });
+  */
 </script>
 
 </body>
