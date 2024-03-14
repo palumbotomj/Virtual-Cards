@@ -1,19 +1,33 @@
-/* Add to the <style> section */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f0f0f0;
 }
 
 .card-component {
-  animation: fadeIn 0.5s ease-in-out;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.5s, opacity 0.5s;
+    animation: fadeIn 0.5s;
 }
 
-@keyframes flip {
-  from { transform: rotateY(0deg); }
-  to { transform: rotateY(180deg); }
+.hidden {
+    display: none;
 }
 
-/* Apply this class to elements that should flip */
-.flip-animation {
-  animation: flip 0.5s ease-in-out;
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .card-component {
+        transform: translate(-50%, -50%) scale(0.8);
+    }
 }
