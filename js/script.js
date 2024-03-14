@@ -1,19 +1,33 @@
+function hideElement(id) {
+    var element = document.getElementById(id);
+    if (element) {
+        element.classList.add('hidden');
+    }
+}
+
+function showElement(id) {
+    var element = document.getElementById(id);
+    if (element) {
+        element.classList.remove('hidden');
+    }
+}
+
 document.getElementById('envelope-front').addEventListener('click', function() {
-    this.classList.add('hidden');
-    document.getElementById('envelope-back').classList.remove('hidden');
+    hideElement('envelope-front');
+    showElement('envelope-back');
 });
 
 document.getElementById('envelope-back').addEventListener('click', function() {
-    this.classList.add('hidden');
-    document.getElementById('card-front').classList.remove('hidden');
+    hideElement('envelope-back');
+    showElement('card-front');
 });
 
 document.getElementById('card-front').addEventListener('click', function() {
-    this.classList.add('hidden');
-    document.getElementById('card-inside').classList.remove('hidden');
+    hideElement('card-front');
+    showElement('card-inside');
 });
 
 document.getElementById('card-inside').addEventListener('click', function() {
-    this.classList.add('hidden');
-    document.getElementById('card-back').classList.remove('hidden');
+    hideElement('card-inside');
+    showElement('card-back');
 });
